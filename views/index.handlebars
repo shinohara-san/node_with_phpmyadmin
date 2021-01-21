@@ -1,0 +1,35 @@
+<h1 class="text-center mb-3">{{title}}</h1>
+{{!-- <form action="/api/members" method="POST" class="mb-4">
+  <div class="form-group">
+    <label for="name">NAME</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">EMAIL</label>
+    <input type="email" name="email" class="form-control">
+  </div>
+  <input type="submit" value="Add Member" class="btn btn-primary btn-block">
+</form> --}}
+<h4>Beer list</h4>
+<form action="/" method="POST" class="mb-4">
+  <div class="form-group">
+    <label for="name">NAME</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="name">TAGLINE</label>
+    <input type="text" name="tagline" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">DESCRIPTION</label>
+    <input type="text" name="description" class="form-control">
+  </div>
+  <input type="submit" value="Add Beer" class="btn btn-primary btn-block">
+</form>
+<ul class="list-group">
+  {{#each beers}}
+    <li class="list-group-item">{{this.id}} : {{this.name}} <a href="/detail/{{this.id}}">詳細</a></li>
+  {{/each}}
+</ul>
+
+{{!-- <a href="/api/members" class="btn btn-light mt-4">Visit API</a> --}}

@@ -1,0 +1,12 @@
+{{!-- <h1>{{title}}の詳細</h1> --}}
+<div class="container">
+{{#each beer}}
+<div>名前: {{this.name}}</div>
+<div>キャッチフレーズ: {{this.tagline}}</div>
+<div>内容: {{this.description}}</div>
+
+<a href="/edit/{{this.id}}">編集</a>
+<a href="/delete/{{this.id}}">削除</a>
+<a href="/">戻る</a>
+{{/each}}
+</div>
