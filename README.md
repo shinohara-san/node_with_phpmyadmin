@@ -15,3 +15,6 @@
  - METHODを選択
  - localhost:5000の後ろに必要に応じてid
  - 書き込む動作についてはBody、raw、JSONを選択すること
+
+### formでmethodをdeleteやputにしたいとき
+ - [こちら](http://portaltan.hatenablog.com/entry/2015/07/22/122031)

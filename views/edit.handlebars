@@ -1,5 +1,5 @@
 {{#each beer}}
-<form action="/update/{{this.id}}" method="PUT" class="mb-4">
+<form action="/update/{{this.id}}" method="POST" class="mb-4">
   <div class="form-group">
     <label for="name">NAME</label>
     <input type="text" name="name" class="form-control" value="{{this.name}}">
@@ -11,7 +11,9 @@
   <div class="form-group">
     <label for="email">DESCRIPTION</label>
     <input type="text" name="description" class="form-control" value="{{this.description}}">
+    <input type="hidden" value="{{this.id}}">
   </div>
+  <input type="hidden" name="_method" value="PUT">
   <input type="submit" value="Update Beer" class="btn btn-primary btn-block">
 </form>
 {{/each}}

@@ -148,18 +148,29 @@ app.get("/edit/:id", (req, res) => {
   })
 });
 
-app.put("/update/:id", (req, res) => {
+app.post("/update/:id", (req, res) => {
   pool.getConnection((err, connection) => {
     if (err) throw err;
     console.log(`Connected as id ${connection.threadId}`);
 
-    const { id, name, tagline, description } = req.body;
+    const id = req.params.id
+    console.log(req.body);
+    const { name, tagline, description} = req.body;
+
+    if (!req.body.name || !req.body.tagline || !req.body.description) {
+          return res.status(400).json({ msg: "Please include a name, tagline and description" });
+          //returnつければelseで書かなくてもいいheader already sentが出てこないようになる
+    }
+
     
-    connection.query("UPDATE beers SET name = ?, tagline = ?, description = ?, WHERE id = ?", [name, tagline, description, id], (err, rows) => {
+    connection.query("UPDATE beers SET name = ?, tagline = ?, description = ? WHERE id = ?", [name, tagline, description, id], (err, rows) => {
       connection.release(); //Return the connection to pool
 
       if (!err) {
-        res.send(`The record with the name: ${name} has been updated.`);
+        // res.send(`The record with the name: ${name} has been updated.`);
+        res.render("update", {
+          name
+        });
       } else {
         console.log(err);
       }
